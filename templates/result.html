@@ -527,9 +527,8 @@ body{
       </head>
       <body>
         <div class="navbar">
-            <a href="aboutus.html" style="font-size: 20px;">about us</a>
-            <a href="indexAR.html"style="font-size: 20px;">عربي</a>
-           
+            <a href="/"style="font-size: 20px;">Home</a>
+            <a href="/about" style="font-size: 20px;">about us</a>
           
         <div class="container" style="background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
           <div class="background" >
@@ -539,7 +538,7 @@ body{
             <div class="content">
               <h1 class="Condition" style="color: #ffffff;">{{ prediction }}</br></h1>
               <div style="opacity: 0.8;" class="textz">
-              <p style="padding-top: 40%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Temperature: {{temperature}} </br></p>
+                <p style="padding-top: 40%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Temperature: {{ temperature | round(1) }}° </br></p>
                 <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Humidity: {{humidity}}</br></p>
                     <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Wind Speed: {{wind_speed}}</br></p>
                         <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Pressure: {{pressure}}</br></p>
@@ -552,9 +551,9 @@ body{
             
             </p>
         
-              <h1 class="Temp" style="color: #ffffff;">20°</h1>
+              <h1 class="Temp" style="color: #ffffff;">{{ temperature | round(1) }}°</h1>
               <h1 class="Time" style="color: #ffffff;" >Weather Prediction Result</h1>
-              <h1 class="Location" style="color: #ffffff;"><i class="material-icons locationIcon"></i> dammam, ksa</h1>
+              <h1 class="Location" style="color: #ffffff;"><i class="material-icons locationIcon"></i> {{ api_city }}, {{ country }}</h1>
            </div> 
           </div>
           </body>

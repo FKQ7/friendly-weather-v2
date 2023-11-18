@@ -77,6 +77,10 @@ def result():
         # error handler 
         error_message = f"Error fetching data from OpenWeatherMap: {e}"
         return render_template('error.html', error_message=error_message)
+    
+@app.route('/about')
+def about():
+    return render_template('about-us.html')
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0')
