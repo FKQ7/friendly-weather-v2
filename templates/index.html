@@ -1,59 +1,200 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Weather Prediction</title>
-   <style>
-       body {
-           font-family: 'Arial', sans-serif;
-           background-color: #f4f4f4;
-           margin: 0;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           height: 100vh;
-       }
+<!-- HTML !-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-GLhlTQ8iN17U2RdD98/kWr+9I/DAjZbdz1l5t+5UZBek1iym8KbT1BqUG5KZvmUo" crossorigin="anonymous">
+<style>
+.navbar {
+   padding-top: 0px;
+ 
+ 
+}
 
-       #container {
-           text-align: center;
-           padding: 20px;
-           background-color: #fff;
-           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-           border-radius: 8px;
-       }
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-       h1 {
-           color: #3498db;
-       }
 
-       input[type="button"], input[type="submit"] {
-           background-color: #3498db;
-           color: #fff;
-           padding: 10px 20px;
-           border: none;
-           border-radius: 4px;
-           cursor: pointer;
-           transition: background-color 0.3s;
-       }
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
 
-       input[type="button"]:hover, input[type="submit"]:hover {
-           background-color: #2980b9;
-       }
-   </style>
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  color: #949494;
+  
+}
+
+
+
+
+
+@media screen and (max-width:600px){
+  .button-9{
+    font-size: 24px;
+    color: #000;
+  }
+}
+</style>
 </head>
-<body>
-   <div id="container">
-       <h1>Weather Prediction</h1>
+<body style="background-color:white;">
 
-       <form id="predictionForm" action="/result" method="post">
-           <input type="hidden" name="latitude" id="latitude">
-           <input type="hidden" name="longitude" id="longitude">
+<div class="navbar">
+  <a href="about-us.html" style="font-size: 20px;">About us</a>
+ 
 
-           <input type="button" value="Get My Location" onclick="getLocation()">
-       </form>
-   </div>
+
+</body>
+</html>
+<center><h1 style="padding-left: 0%; padding-right: 150px;">Weather Prediction</h1>
+    
+    <form id="predictionForm" action="/result" method="post">
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+    <button class="button-9" role="button">get my Location<br><svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}; </style><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></button>
+    
+ 
+
+</center>
+<video autoplay muted loop id="video-background">
+    <source src="{{ url_for('static', filename='formation_of_clouds (1080p).mp4') }}" type="video/mp4">
+    
+</video>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+
+
+
+  
+
+ @import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Rajdhani:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+img{width: 35px;height: 50px;
+    padding-bottom: 100%;
+
+}
+
+   #video-background {
+    
+    filter:brightness(60%);
+    
+          
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 50.5); /* Adjust the last value (0.5) for the darkness level */
+            z-index: 0;
+        }
+
+        #content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+    /* Background Gradient for Monochromatic Colors */
+    h1{position: relative;
+        top: 250px;
+        color: #ffffff;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 50px;
+    
+    }
+ 
+center
+.button-9:hover{
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Rajdhani', sans-serif;
+    
+ 
+}
+.button-9 {
+    display: inline-block;
+    transition-duration: 0.4s;
+    border: #000000;
+    border: 100px;
+    top: 300px;
+  appearance: button;
+  backface-visibility: hidden;
+  background-image: linear-gradient(to right, rgb(0, 153, 255) , rgb(7, 100, 187));
+  border-radius: 20px;
+  border-width: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 280%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 25px 95px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20%;
+  height: 20%;
+  bottom: 20%;
+}
+
+.button-9:disabled {
+  cursor: default;
+}
+
+.button-9:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}</style>
+
+
+
+
+
+
+
+
+
+
 
    <script>
        function getLocation() {
@@ -70,5 +211,3 @@
            document.getElementById('predictionForm').submit();
        }
    </script>
-</body>
-</html>

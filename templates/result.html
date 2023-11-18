@@ -1,55 +1,566 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Prediction Result</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        #container {
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h1 {
-            color: #3498db;
-        }
-
-        p {
-            color: #333;
-        }
-    </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Weather Prediction Result</h1>
-
-        <p>Latitude: {{ latitude }}</p>
-        <p>Longitude: {{ longitude }}</p>
-
-        <p>Country: {{ country }}</p>
-        <p>api_city: {{ api_city }}</p>
-
-        <p>Temperature: {{ "{:.0f}".format(temperature) }}°C</p>
-        <p>Humidity: {{ humidity }}%</p>
-        <p>Wind Speed: {{ wind_speed }} m/s</p>
-        <p>Pressure: {{ pressure }} hPa</p>
-        <p>Visibility: {{ visibility }} meters</p>
-
-        <p>Prediction: {{ prediction }}</p>
-    </div>
+    <h1>Weather Prediction Result</h1>
+    <p>The predicted weather is: {{ prediction }}</p>
 </body>
 </html>
+-->
+
+
+
+
+</body>
+</html> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Elements based on Flask Variable</title>
+</head>
+<body>
+    
+<style>
+
+
+
+
+
+
+<style>
+
+
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  min-width: 600px;
+  max-width: 800px;
+  max-height: 500px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rain{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.rain:nth-of-type(1){
+  --duration: 2.7s;
+  --delay: 1s;
+  transform: translate(10%, 10%) scale(0.9);
+}
+
+.rain:nth-of-type(2){
+  --duration: 2.1s;
+  --delay: 1.2s;
+  transform: translate(-20%, 40%) scale(1.3);
+}
+
+.rain:nth-of-type(3){
+  --duration: 2.3s;
+  --delay: 2s;
+  transform: translate(0%, 50%) scale(1.1);
+}
+
+.rain:nth-of-type(4){
+  --duration: 2s;
+  --delay: 4s;
+  transform: translate(0%, -10%) scale(1.2);
+}
+
+.rain:nth-of-type(5){
+  --duration: 2.5s;
+  --delay: 0s;
+  transform: translate(10%, 0%) scale(0.9);
+}
+
+.rain:nth-of-type(6){
+  --duration: 2s;
+  --delay: 2.7s;
+  transform: translate(-20%, 0%) scale(1);
+}
+
+.rain:nth-of-type(7){
+  --duration: 1.8s;
+  --delay: 1.3s;
+  transform: translate(20%, -40%) scale(1.2);
+}
+
+.rain:nth-of-type(8){
+  --duration: 2.2s;
+  --delay: 0s;
+  transform: translate(20%, 0%) scale(1);
+}
+
+.rain:nth-of-type(9){
+  --duration: 2s;
+  --delay: 0.5s;
+  transform: translate(0%, -10%) scale(1.3);
+}
+
+.drop{
+  background-color: white;
+  width: 3px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 100px); 
+  left: calc(50% - 1.5px);
+  animation-name: fall;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fall{
+  0%{
+    transform: translateY(-120vh);
+  }
+  45%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  46%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.waves > div{
+  position: absolute;
+  top:0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border-radius: 50%;
+  border: solid white 3px;
+  animation-name: spread;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+
+.waves > div:nth-child(2){
+  animation-delay: calc(var(--delay) + 0.3s);
+  animation-timing-function: linear;
+}
+
+@keyframes spread{
+  0%{
+    transform: scale(0);
+    opacity: 1;
+  }
+  40%{
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100%{
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+
+.splash{
+  position: absolute;
+  top: 10%;
+  bottom: 50%;
+  left: 35%;
+  right: 35%;
+  border-radius: 8px;
+  clip-path: polygon(7% 100%, 5% 95%, 3% 80%, 11% 50%, 17% 38%, 23% 44%, 30% 53%, 37% 28%, 40% 29%, 45% 43%, 51% 53%, 59% 36%, 64% 22%, 67% 23%, 70% 34%, 72% 46%, 79% 37%, 83% 37%, 93% 61%, 96% 76%, 96% 94%, 94% 100%);
+  background-color: white;
+  transform-origin: bottom;
+  animation-name: splash;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes splash{
+  0%{
+    transform: scale(0.3, 0);
+  }
+
+  49%{
+    transform: scale(0.3, 0);
+  }
+
+  50%{
+    transform: scale(0.3, 0.3);
+  }
+
+  60%{
+    transform: scale(0.7, 1);
+  }
+
+  90%{
+    transform: scale(1, 0);
+  }
+
+  100%{
+    transform: scale(1, 0);
+  }
+}
+
+.particles > div{
+  position: absolute; 
+  border-radius: 100%;
+  background-color: white;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-fill-mode: backwards;
+}
+
+.particles > div:nth-child(1){
+  width: 7px;
+  height: 7px;
+  top: 50%;
+  left: 50%;
+  animation-name: jumpLeft;
+}
+
+.particles > div:nth-child(2){
+  width: 5px;
+  height: 5px;
+  top: 30%;
+  left: 50%;
+  animation-name: jumpLeft;
+  animation-delay: calc(var(--delay) + 0.1s);
+}
+
+.particles > div:nth-child(3){
+  width: 3px;
+  height: 3px;
+  top: 20%;
+  left: 70%;
+  animation-name: jumpRight;
+  animation-delay: calc(var(--delay) + 0.15s);
+}
+
+.particles > div:nth-child(4){
+  width: 5px;
+  height: 5px;
+  top: 30%;
+  left: 50%;
+  animation-name: jumpRight;
+  animation-delay: calc(var(--delay) + 0.3s);
+}
+
+@keyframes jumpLeft{
+  0%{
+    transform: translate(0,0) scale(0);
+  }
+
+  45%{
+    transform: translate(0,0) scale(0);
+  }
+
+  60%{
+    transform: translate(-50px, -90px) scale(1);
+  }
+
+  100%{
+    transform: translate(-60px, 0px) scale(0.1);
+  }
+}
+
+@keyframes jumpRight{
+  0%{
+    transform: translate(0,0) scale(0);
+  }
+
+  45%{
+    transform: translate(0,0) scale(0);
+  }
+
+  60%{
+    transform: translate(30px, -80px) scale(1);
+  }
+
+  100%{
+    transform: translate(50px, 0px) scale(0.1);
+  }
+}
+
+{
+    padding: 0;
+    margin: 0;
+    color: #FFF;
+}
+
+body{
+    background-color: #ededed;
+}
+
+.container{
+    
+    overflow: hidden;
+    z-index: 10;
+    position: relative;
+    margin: 150px auto;
+    height: 550px;
+    width: 700px;
+     
+
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+
+/*  BACKGROUND  */
+
+
+
+
+/*  CONTENT  */
+
+.sun{
+    z-index: 1000;
+    font-size: 15px !important;
+}
+
+.Condition{
+    z-index: 1000;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    left: 20px;  
+    top: 10px;
+}
+
+.Temp{
+    z-index: 1000;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    font-size: 55px;
+    font-weight: 400;
+    left: 20px;
+    bottom: 5px;
+}
+
+#F{
+    z-index: 1000;
+    font-family: "Roboto",sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
+
+.Condition{
+    color: #ffffff;
+}
+.textz{
+    color: #ffffff;
+}
+
+.Time{
+    z-index: 1000;
+    position: absolute;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 30px;
+    font-weight: 200;
+    right: 20px;
+    top: 10px;
+}
+
+.locationIcon{
+    z-index: 1000;
+    font-size: 10px !important;
+}
+
+.Location{
+    z-index: 1000;
+    position: absolute;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    right: 20px;
+    bottom: 15px;
+}
+
+@keyframes enlarge{
+    50%{
+        transform: scale(1.2);
+    }
+}
+@media screen and (max-width:500px) {
+    .container{
+ 
+  width: 500%;
+  height: 600%;
+  min-width: 100px;
+  max-width: 800px;
+  max-height: 500px;
+  position: relative;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  font-size: 20%;
+    }
+    .Condition{
+
+
+
+    }
+.time{
+    font-size: 16px;
+}
+ .Temp{
+    position: relative;
+    font-size: 35px;
+    
+   
+}
+.textz p{
+    color: #000000;
+}
+.Condition{
+    position: relative;
+
+}
+
+
+}
+
+.navbar {
+   padding-top: 0px;
+ 
+ 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  color: #949494;
+  
+}
+
+
+
+
+
+@media screen and (max-width:600px){
+  .button-9{
+    font-size: 24px;
+    color: #000;
+  }
+}
+</style>
+
+
+
+
+
+
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      </head>
+      <body>
+        <div class="navbar">
+            <a href="aboutus.html" style="font-size: 20px;">about us</a>
+            <a href="indexAR.html"style="font-size: 20px;">عربي</a>
+           
+          
+        <div class="container" style="background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
+          <div class="background" >
+            <div class="Circle1"></div>
+            <div class="Circle2"></div>
+            <div class="Circle3"></div>
+            <div class="content">
+              <h1 class="Condition" style="color: #ffffff;">{{ prediction }}</br></h1>
+              <div style="opacity: 0.8;" class="textz">
+              <p style="padding-top: 40%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Temperature: {{temperature}} </br></p>
+                <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Humidity: {{humidity}}</br></p>
+                    <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Wind Speed: {{wind_speed}}</br></p>
+                        <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Pressure: {{pressure}}</br></p>
+                            <p style="padding-top: 4%; font-size: 16; padding-left: 30px; color: #ffffff; font-family: Noto Sans, sans-serif ;">Visibility: {{visibility}}</br></p>
+                                
+                
+                
+              </p>
+            </div>
+            
+            </p>
+        
+              <h1 class="Temp" style="color: #ffffff;">20°</h1>
+              <h1 class="Time" style="color: #ffffff;" >Weather Prediction Result</h1>
+              <h1 class="Location" style="color: #ffffff;"><i class="material-icons locationIcon"></i> dammam, ksa</h1>
+           </div> 
+          </div>
+          </body>
+
+ 
+  
+
+ 
+
