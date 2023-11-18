@@ -31,12 +31,8 @@ Equine Tracker comes with a wide range of features tailored for horse care:
 
 - **Simple**: Easy and friendly for everyone.
 - **Custom your own data**:You can easily edit, improve, even play with the data.
-- **Feeding Schedule**: Set up feeding schedules and receive reminders.
-- **Exercise Logs**: Track the exercise routines and activities of your horses.
-- **Horse Events**: Plan and manage events like competitions, shows, and rides.
-- **Community**: Connect with fellow horse enthusiasts and share your horse stories.
+- **Invest in the future**: great idea needs great people so that is why it is open source 
 
-For a detailed guide on using these features, refer to our [User Manual](docs/user-manual.md).
 
 ## Installation
 
@@ -51,13 +47,13 @@ To start using Equine Tracker, follow these installation steps:
 2. Navigate to the project directory:
 
    ```bash
-   cd equine-tracker
+   cd Weather_Prediction
    ```
 
 3. Install the required dependencies:
 
    ```bash
-   
+   pip install -r requirements.txt
    ```
 
 4. Start the application:
@@ -67,15 +63,16 @@ To start using Equine Tracker, follow these installation steps:
    python app.py
    ```
 
-For additional setup instructions and troubleshooting, consult the [Installation Guide](docs/installation-guide.md).
+For additional setup instructions and troubleshooting, consult the us 
 
 ## Usage
 
-Equine Tracker is user-friendly and intuitive. To get started quickly, please refer to our [User Manual](docs/user-manual.md). It covers everything from setting up your horse profiles to recording health data and scheduling events.
+really ease no further clarification,
+but if you want to generate data or do custom data just run gymData.py and change train.py and app.py dataset to the new one
 
 ## Contributing
 
-We welcome contributions from the horse-loving community! If you have ideas for improvements, bug reports, or want to contribute code, please check our [Contribution Guidelines](CONTRIBUTING.md) for details on how to get involved.
+We welcome contributions from the Friendly community! If you have ideas for improvements, bug reports, or want to contribute code, let us know
 
 ## License
 
@@ -83,36 +80,4 @@ Equine Tracker is open-source software licensed under the Apache License 2.0. Fo
 
 ## Acknowledgments
 
-We'd like to extend our gratitude to the equestrian community for their support and inspiration. Equine Tracker wouldn't be possible without you.
-
-![Horse Image 3](images/horse3.jpg)
-![Horse Image 4](images/horse4.jpg)
-
-Thank you for choosing Equine Tracker, and may your horses thrive and gallop with joy!
-w   1887    
-h   1380    
-1380
-
-1887
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-13
-
- 
-
-13
+We'd like to extend our gratitude to the Frendly Weather community for their support and inspiration.

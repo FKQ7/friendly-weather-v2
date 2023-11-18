@@ -1,3 +1,4 @@
+#testing the api key and the api overall 
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
@@ -27,9 +28,9 @@ def get_weather(api_key, city):
         response = requests.get(base_url, params=params)
         data = response.json()
 
-        # Check if the API request was successful
+        # check if the API request if good
         if response.status_code == 200:
-            # Extracting relevant weather information
+            # extracting weather information
             temperature = data['main']['temp']
             humidity = data['main']['humidity']
             wind_speed = data['wind']['speed']
@@ -37,17 +38,15 @@ def get_weather(api_key, city):
             city_name = data['name']
             pressure = data['main']['pressure']
             visibility = data.get('visibility', 'N/A')
-
-            # Extracting cloudiness information
+            # extracting cloudiness information
             cloudiness = data['clouds']['all'] if 'clouds' in data else 'N/A'
-
-            # Extracting date information
+            # extracting date information
             timestamp = data['dt']
             date = datetime.utcfromtimestamp(timestamp)
             month = date.month
             season = get_season(month)
 
-            # Display the extracted information
+            # print the info
             print(f"Weather information for {city_name} ({season}):")
             print(f"Temperature: {temperature}°C")
             print(f"Humidity: {humidity}%")
@@ -66,7 +65,7 @@ def get_weather(api_key, city):
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    # Replace 'YOUR_API_KEY' with your actual OpenWeatherMap API key
+    # replace 'fk_api_key' with your OpenWeatherMap API key
     api_key = os.getenv("fk_api_key")
     city_name = input("Enter the city name: ")
 
