@@ -8,20 +8,34 @@
         /* Add your styles here */
     </style>
     <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                alert('Geolocation is not supported by this browser.');
-            }
-        }
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+              alert('Geolocation is not supported by this browser.');
+          }
+      }
 
-        function showPosition(position) {
-            document.getElementById('latitude').value = position.coords.latitude;
-            document.getElementById('longitude').value = position.coords.longitude;
-            document.getElementById('predictionForm').submit();
-        }
-    </script>
+      function showPosition(position) {
+          document.getElementById('latitude').value = position.coords.latitude;
+          document.getElementById('longitude').value = position.coords.longitude;
+          document.getElementById('predictionForm').submit();
+      }
+
+      function manuallySubmitForm() {
+          var manualLatitude = document.getElementById('manualLatitude').value;
+          var manualLongitude = document.getElementById('manualLongitude').value;
+
+          // Check if manualLatitude and manualLongitude are not empty
+          if (manualLatitude && manualLongitude) {
+              document.getElementById('latitude').value = manualLatitude;
+              document.getElementById('longitude').value = manualLongitude;
+              document.getElementById('manualForm').submit();
+          } else {
+              alert('Please enter both Latitude and Longitude for manual submission.');
+          }
+      }
+  </script>
 </head>
 <body>
 <!-- HTML !-->
@@ -86,12 +100,21 @@
 </body>
 </html>
 <center><h1 style="padding-left: 0%; padding-right: 150px;">Weather Prediction</h1>
-
   <form id="predictionForm" action="/result" method="post">
-    <input type="hidden" id="latitude" name="latitude">
-    <input type="hidden" id="longitude" name="longitude">
+    <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+    <button class="button-9" role="button" onclick="getLocation()">Get My Location</button>
+</form>
 
-    <button class="button-9" type="button" onclick="getLocationAndSubmit()">get my Location<br><svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 0 384 512">
+<!-- Manual form -->
+<form id="manualForm" action="/result" method="post">
+    <label for="manualLatitude">Latitude:</label>
+    <input type="text" id="manualLatitude" name="latitude">
+
+    <label for="manualLongitude">Longitude:</label>
+    <input type="text" id="manualLongitude" name="longitude">
+
+    <button class="button-9" role="button" onclick="manuallySubmitForm()">Submit Manually</button>
 </form>
 
 </center>
