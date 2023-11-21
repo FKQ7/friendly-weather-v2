@@ -63,6 +63,8 @@ To start using Equine Tracker, follow these installation steps:
    python app.py
    ```
 
+Then go to "http://127.0.0.1:5000/"
+
 For additional setup instructions and troubleshooting, consult the us 
 
 ## Usage
